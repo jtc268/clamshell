@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="${CLAMSHELL_REPO_URL:-https://github.com/YOUR_GITHUB/clamshell.git}"
+REPO_URL="${CLAMSHELL_REPO_URL:-https://github.com/jtc268/clamshell.git}"
 WORKDIR="${TMPDIR:-/tmp}/clamshell-install"
 
 need() {
