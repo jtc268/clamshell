@@ -1,7 +1,5 @@
 # Clamshell
 
-[![macOS](https://github.com/jtc268/clamshell/actions/workflows/ci.yml/badge.svg)](https://github.com/jtc268/clamshell/actions/workflows/ci.yml)
-
 <p align="center">
   <img src="assets/logo.png" width="128" alt="Clamshell app icon">
 </p>
