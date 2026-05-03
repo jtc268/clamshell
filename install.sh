@@ -27,7 +27,6 @@ fi
 cd "$ROOT"
 
 APP_PATH="$("$ROOT/scripts/package_app.sh")"
-clang -O2 -Wall -Wextra "$ROOT/helper/clamshell-helper.c" -o "$ROOT/dist/clamshell-helper"
 
 echo "Installing Clamshell.app to /Applications"
 rm -rf /tmp/Clamshell.app

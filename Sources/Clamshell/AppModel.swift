@@ -5,6 +5,7 @@ import Foundation
 final class AppModel: ObservableObject {
     @Published private(set) var snapshot: MonitorSnapshot = .empty
     @Published private(set) var helperStatus: HelperStatus = .missing
+    @Published private(set) var helperInstallMessage: String?
     @Published private(set) var isHoldingSleep = false
 
     let settings = SettingsStore()
@@ -67,5 +68,11 @@ final class AppModel: ObservableObject {
             isHoldingSleep = false
             heldDuringThisRun = false
         }
+    }
+
+    func installHelper() {
+        helperInstallMessage = "Installing helper..."
+        helperInstallMessage = sleepController.installHelper()
+        helperStatus = sleepController.helperStatus()
     }
 }

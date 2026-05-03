@@ -140,7 +140,7 @@ struct JobMonitor {
             source: .claudeCode,
             enabled: true,
             active: !matches.isEmpty,
-            reason: matches.isEmpty ? "No Claude/Cloud Code process found." : "Claude/Cloud Code process is running.",
+            reason: matches.isEmpty ? "No Cloud Code process found." : "Cloud Code process is running.",
             detail: matches.first.map { summarize($0.commandLine) },
             count: matches.count
         )

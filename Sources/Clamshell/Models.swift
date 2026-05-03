@@ -11,7 +11,7 @@ enum WatchSource: String, CaseIterable, Codable, Identifiable {
         switch self {
         case .codexApp: "Codex App"
         case .codexCLI: "Codex CLI"
-        case .claudeCode: "Claude / Cloud Code CLI"
+        case .claudeCode: "Cloud Code CLI"
         }
     }
 
@@ -19,7 +19,7 @@ enum WatchSource: String, CaseIterable, Codable, Identifiable {
         switch self {
         case .codexApp: "App"
         case .codexCLI: "CLI"
-        case .claudeCode: "Claude"
+        case .claudeCode: "Cloud"
         }
     }
 }

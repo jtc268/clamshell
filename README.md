@@ -26,9 +26,9 @@ From a checkout:
 
 - Codex App
 - Codex CLI
-- Claude / Cloud Code CLI
+- Cloud Code CLI
 
-Codex App is on by default. Codex CLI is on by default. Claude / Cloud Code is optional.
+Codex App is on by default. Codex CLI is on by default. Cloud Code CLI is optional.
 
 ## Why Trust It
 

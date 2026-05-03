@@ -25,9 +25,9 @@ Ignored Codex App child helpers:
 
 Clamshell treats Codex CLI as active when a local process command contains `codex` and is not an app-server process.
 
-## Claude / Cloud Code CLI
+## Cloud Code CLI
 
-Clamshell treats Claude / Cloud Code as active when a local process command points at a Claude Code native binary or contains `claude-code` or `cloud-code`.
+Clamshell treats Cloud Code CLI as active when a local process command contains `cloud-code`, `claude-code`, or points at a compatible native CLI binary.
 
 ## Sleep Control
 

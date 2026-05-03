@@ -64,6 +64,44 @@ final class SleepController {
         )
     }
 
+    func installHelper() -> String {
+        guard let bundledHelper = Bundle.main.url(forResource: "clamshell-helper", withExtension: nil) else {
+            return "Bundled helper is missing. Rebuild the app."
+        }
+
+        let command = [
+            "/bin/mkdir -p /usr/local/libexec",
+            "/usr/bin/install -o root -g wheel -m 4755 \(shellEscape(bundledHelper.path)) \(shellEscape(helperPath))"
+        ].joined(separator: " && ")
+
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
+        process.arguments = [
+            "-e",
+            "do shell script \"\(appleScriptEscape(command))\" with administrator privileges"
+        ]
+
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.standardError = pipe
+
+        do {
+            try process.run()
+            process.waitUntilExit()
+        } catch {
+            return error.localizedDescription
+        }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+        if process.terminationStatus == 0 {
+            return "Helper installed."
+        }
+
+        return output.isEmpty ? "Helper install was cancelled." : output
+    }
+
     private func runHelper(_ action: String) -> (status: Int32, output: String) {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: helperPath)
@@ -82,5 +120,15 @@ final class SleepController {
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         return (process.terminationStatus, String(data: data, encoding: .utf8) ?? "")
+    }
+
+    private func shellEscape(_ value: String) -> String {
+        "'\(value.replacingOccurrences(of: "'", with: "'\\''"))'"
+    }
+
+    private func appleScriptEscape(_ value: String) -> String {
+        value
+            .replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "\"", with: "\\\"")
     }
 }
