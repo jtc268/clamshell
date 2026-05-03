@@ -27,7 +27,7 @@ Clamshell treats Codex CLI as active when a local process command contains `code
 
 ## Claude Code CLI
 
-Clamshell treats Claude Code CLI as active when a local process command contains `claude-code` or points at a compatible native Claude CLI binary.
+Clamshell treats Claude Code CLI as active when a local process command is `claude`, points at `@anthropic-ai/claude-code`, contains `claude-code`, or points at a compatible native Claude CLI binary.
 
 ## Sleep Control
 

@@ -11,9 +11,12 @@ The privileged helper is a small C wrapper around four allowlisted commands:
 
 Install builds the helper from source, installs it at `/usr/local/libexec/clamshell-helper`, and sets it root-owned with mode `4755` so the unprivileged menu bar app can restore sleep after the lid is closed.
 
+The recommended one-line install clones the repository first, then runs `./install.sh` from the checkout. The installer does not fetch and execute a remote shell script.
+
 To remove it:
 
 ```bash
-sudo rm -f /usr/local/libexec/clamshell-helper
-sudo rm -rf /Applications/Clamshell.app
+[ ! -e /usr/local/libexec/clamshell-helper ] || sudo /bin/rm /usr/local/libexec/clamshell-helper
 ```
+
+Then drag `/Applications/Clamshell.app` to the Trash.

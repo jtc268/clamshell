@@ -13,7 +13,6 @@ swift build -c release >&2
 mkdir -p "$DIST"
 clang -O2 -Wall -Wextra "$ROOT/helper/clamshell-helper.c" -o "$HELPER" >&2
 
-rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 cp "$EXECUTABLE" "$APP/Contents/MacOS/$APP_NAME"

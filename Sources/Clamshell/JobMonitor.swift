@@ -127,8 +127,11 @@ struct JobMonitor {
         let matches = processes.filter { process in
             let command = process.commandLine.lowercased()
             return (
-                command.contains("claude-code")
-                    || command.contains("cloud-code")
+                command == "claude"
+                    || command.hasPrefix("claude ")
+                    || command.contains("/claude ")
+                    || command.contains("claude-code")
+                    || command.contains("@anthropic-ai/claude-code")
                     || command.contains("/resources/native-binary/claude")
                     || command.hasSuffix("/claude")
             )
