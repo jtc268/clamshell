@@ -12,7 +12,7 @@ struct ClamshellApp: App {
                 watchCodexCLI: true,
                 watchClaudeCode: true,
                 autoSleepWhenSettled: false,
-                settleSeconds: 90
+                settleSeconds: 300
             )
             let snapshot = JobMonitor().snapshot(
                 settings: settings,

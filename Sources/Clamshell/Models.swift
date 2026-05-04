@@ -63,7 +63,7 @@ struct AppSettings: Codable {
         watchCodexCLI: true,
         watchClaudeCode: false,
         autoSleepWhenSettled: true,
-        settleSeconds: 90
+        settleSeconds: 300
     )
 }
 

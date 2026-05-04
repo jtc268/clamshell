@@ -114,7 +114,7 @@ struct PanelView: View {
                     }
 
                     Spacer(minLength: 8)
-                    if status.count > 0 {
+                    if status.active && status.count > 0 {
                         Text("\(status.count)")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(.secondary)

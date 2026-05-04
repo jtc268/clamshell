@@ -44,10 +44,13 @@ Codex App is on by default. Codex CLI is on by default. Claude Code CLI is optio
 - Polls local process state every eight seconds.
 - Checks recent Codex session writes under `~/.codex`.
 - Holds sleep only while a watched job is active.
+- Uses a five-minute settle window before deciding work is done.
 - Restores `pmset` sleep behavior before triggering sleep.
 - No daemon, launch item, login item, updater, or background service.
 
-Codex App detection is heuristic because there is no public local job API. The hook is intentionally narrow: Codex `app-server` child work plus recent Codex session-file writes inside the settle window.
+Codex App detection is heuristic because there is no public local job API. The hook intentionally does not treat an open Codex window as active; it requires the app-server plus recent Codex session-file writes inside the settle window.
+
+Codex CLI detection also avoids treating an idle `codex` process as active. It ignores Codex Terminal wrapper processes and looks for CLI child work or recent Codex session activity.
 
 ## Why Trust It
 

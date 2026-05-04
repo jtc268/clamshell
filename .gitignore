@@ -2,5 +2,6 @@
 .build/
 dist/
 DerivedData/
+tmp/
 *.xcuserstate
 *.swp

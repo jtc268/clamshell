@@ -11,8 +11,9 @@ final class SettingsStore: ObservableObject {
     init(defaults: UserDefaults = .standard) {
         if
             let data = defaults.data(forKey: key),
-            let decoded = try? JSONDecoder().decode(AppSettings.self, from: data)
+            var decoded = try? JSONDecoder().decode(AppSettings.self, from: data)
         {
+            decoded.settleSeconds = max(decoded.settleSeconds, AppSettings.defaults.settleSeconds)
             values = decoded
         } else {
             values = .defaults
